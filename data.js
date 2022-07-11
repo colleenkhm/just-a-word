@@ -1,18 +1,51 @@
-const words = ['luxury', 'vacation', 'friendship', 'ripple', 'tide', 'sunset', 'beginning', 'hope', 'intention', 'adversity', 'creation', 'rain', 'storm', 'difficult', 'new', 'excitement', 'curiosity']
-// can decide between positive, neutral, and negative or something similar, maybe like "heavy" vs. "light" or "deep thought" vs "quick post"
+const words = ['luxury', 'vacation', 'friendship', 'ripple', 'tide', 'sunset', 'beginning', 'hope', 'intention', 'adversity', 'creation', 'rain', 'storm', 'difficult', 'new', 'excitement', 'curiosity', 'foundation', 'comfort', 'camping', 'struggle', 'defiance', 'benevolence', 'authentic', 'cumbersome', 'unrelenting']
+// can decide between positive, neutral, and negative or something similar, maybe like "heavy" vs. "light" or "deep thought" vs "quick post", maybe a "vocab-learning" mode where it's more difficult words?
 
-function getRandomWord(words) {
+function getRandomWord() {
 
     const randomIndex = Math.floor(Math.random() * words.length);
 
     const randomWord = words[randomIndex];
+    let usedWordsArray = [];
+    // const usedWords = [];
 
+    if (usedWordsArray.includes(randomWord)) {
+        getRandomWord()
+    } else {
+    usedWordsArray = JSON.parse(localStorage.getItem("usedWords")) || [];
+    words.splice(randomIndex, 1)
+    usedWordsArray.push(randomWord);
+    localStorage.setItem("usedWords", JSON.stringify(usedWordsArray))
+    console.log(usedWordsArray)
     return randomWord;
+    }
 }
 
 const randomWordSelected = getRandomWord(words);
 const wordDisplayed = document.getElementById('wordDisplay');
 wordDisplayed.innerHTML = randomWordSelected;
+
+// let newArr = []
+// function filterWords() {
+// for (let i = 0; i < words.length; i++) {
+//   if (words[i].length > 6) {
+//     newArr.push(words[i])
+//   }
+// }
+
+// console.log(newArr)
+// }
+
+// filterWords();
+
+// let newArr = []
+
+// for (let i = 0; i < words.length; i++) {
+//   if (words[i].length > 6) {
+//     newArr.push(words[i])
+//   }
+// }
+// console.log(newArr)
 
 // TO-DO: 
 // update function to ensure no repetition until array has been cycled through
