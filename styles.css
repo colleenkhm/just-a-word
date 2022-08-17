@@ -1,0 +1,11 @@
+* {
+    background-color: rgb(216, 216, 248);
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#just-a-word {
+    color: white;
+    text-shadow: 1px 1px rgb(142, 100, 171);
+}
+
