@@ -5,23 +5,36 @@ var j = 0;
 
 
 // can decide between positive, neutral, and negative or something similar, maybe like "heavy" vs. "light" or "deep thought" vs "quick post", maybe a "vocab-learning" mode where it's more difficult words?
-
+function updateWordList() {}
 // maybe remove var j, looks like it's randomizing the array before word selection
 // still need to return the randomWord
 function getRandomWord() {
     console.log(words)
+    // ranWords.push(words[j]);
     //returns random number
     j = Math.floor(Math.random() * (i+1));
     //
     words.splice(j, 1);
     console.log(words)
     return words[j];
-    ranWords.push(words[j]);
 }
 
 const randomWordSelected = getRandomWord(words);
     const wordDisplayed = document.getElementById('wordDisplay');
     wordDisplayed.innerHTML = randomWordSelected;
+
+function getWordInfo(event) {
+    event.preventDefault()
+    console.log(word)
+    var queryURL = `https://api.dictionaryapi.dev/api/v2/entries/en/${randomWordSelected}/meanings/definitions`
+    fetch(queryURL)
+}
+
+function getDefinition(words) {
+    console.log(words)
+    var def = words[i].meaning.getDefinition
+    var dictionaryURL = `https://api.dictionaryapi.dev/api/v2/entries/en/${randomWordSelected}/meanings/definitions`
+}
 // // let newArr = []
 // // function filterWords() {
 // // for (let i = 0; i < words.length; i++) {
